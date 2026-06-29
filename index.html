@@ -550,6 +550,42 @@ section{position:relative;}
 .quote-block .q-attr{font-size:12px;color:var(--light);font-style:normal;margin-top:6px;}
 
 /* 결론 배너 */
+/* ━━━ AI UT BLOCK ━━━ */
+.ut-ai-block{background:linear-gradient(145deg,#eef3ff,#f8faff);border:1.5px solid rgba(0,87,255,0.14);border-radius:16px;padding:24px;margin:24px 0;display:flex;flex-direction:column;gap:18px;}
+.ut-ai-badge-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:2px;}
+.ut-ai-badge{display:inline-flex;align-items:center;gap:6px;background:#0057FF;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.03em;white-space:nowrap;}
+.ut-ai-desc{font-size:11px;color:#888;line-height:1.5;}
+.ut-box-card{background:#fff;border-radius:12px;padding:16px 18px;border:1px solid rgba(0,87,255,0.08);}
+.ut-box-title{font-size:12px;font-weight:700;color:#444;margin-bottom:12px;letter-spacing:0.01em;}
+.ut-box-title b{color:#0057FF;}
+.ut-row-top{display:grid;grid-template-columns:1fr 230px;gap:14px;}
+.ut-stat-row{display:flex;gap:10px;margin-bottom:12px;}
+.ut-stat-card{flex:1;text-align:center;background:#f5f8ff;border-radius:10px;padding:10px 6px;}
+.ut-stat-num{font-size:22px;font-weight:800;color:#0057FF;line-height:1.1;}
+.ut-stat-num small{font-size:13px;font-weight:600;}
+.ut-stat-lbl{font-size:10px;color:#666;line-height:1.4;margin-top:3px;}
+.ut-key-insight{font-size:11px;color:#333;background:#f0f5ff;border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:8px;line-height:1.5;}
+.ut-insight-dot{width:6px;height:6px;min-width:6px;border-radius:50%;background:#0057FF;}
+.ut-donut-layout{display:flex;align-items:center;gap:14px;}
+.ut-donut-legend{display:flex;flex-direction:column;gap:7px;}
+.ut-leg{display:flex;align-items:center;gap:7px;font-size:11px;color:#444;}
+.ut-dot{display:inline-block;width:8px;height:8px;min-width:8px;border-radius:50%;}
+.ut-hm-wrap{display:flex;flex-direction:column;gap:5px;}
+.ut-hm-row{display:grid;grid-template-columns:138px repeat(5,1fr);gap:4px;align-items:center;}
+.ut-hm-hd{font-size:9px;color:#999;text-align:center;font-weight:600;padding:3px 2px;}
+.ut-hm-task{font-size:11px;color:#444;font-weight:500;}
+.ut-hm-task span{display:inline-block;background:#0057FF;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-right:4px;}
+.ut-hm-cell{text-align:center;font-size:11px;font-weight:700;padding:8px 2px;border-radius:6px;background:color-mix(in srgb,#ff6b6b calc(var(--h)*100%),#e8f4e8);color:color-mix(in srgb,#a80000 calc(var(--h)*100%),#2d6a2d);}
+.ut-hm-foot{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:10px;color:#bbb;}
+.ut-hm-grad{width:72px;height:7px;border-radius:4px;background:linear-gradient(to right,#e8f4e8,#ffd6a0,#ff6b6b);}
+.ut-hm-note{margin-left:auto;font-size:10px;color:#ccc;}
+.ut-journey-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+@media(max-width:640px){
+  .ut-row-top{grid-template-columns:1fr;}
+  .ut-hm-row{grid-template-columns:88px repeat(5,1fr);}
+  .ut-hm-task{font-size:9px;}
+  .ut-hm-cell{font-size:10px;padding:6px 1px;}
+}
 .conclusion-banner{
   background:rgba(4,14,72,0.76);
   backdrop-filter:blur(20px) saturate(180%);
@@ -1224,7 +1260,108 @@ section{position:relative;}
             <p>"내 경조사에 누가 얼마를 냈는지 정확히 알아야 나중에 돌려줄 수 있기 때문에, 기록 기능이 제일 중요해요."</p>
             <p class="q-attr">— 50대 남성, 유저 인터뷰 중</p>
           </div>
-          <div class="conclusion-banner">
+          
+          <!-- AI UT BLOCK -->
+          <div class="ut-ai-block">
+            <div>
+              <div class="ut-ai-badge-row">
+                <span class="ut-ai-badge">&#x1F916; AI&#xB97C; &#xD65C;&#xC6A9;&#xD55C; User Test</span>
+                <span class="ut-ai-desc">35&#xC778; &#xD398;&#xB974;&#xC18C;&#xB098; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158; &middot; AS-IS 5&#xD0ED; &#xAD6C;&#xC870; &#xAE30;&#xC900; &middot; 3&#xAC1C; &#xD0DC;&#xC2A4;&#xD06C; &#xAC80;&#xC99D;</span>
+              </div>
+            </div>
+            <div class="ut-row-top">
+              <div class="ut-box-card">
+                <div class="ut-box-title"><b>&#xD575;&#xC2EC; &#xBC1C;&#xACAC; &#xC694;&#xC57D;</b></div>
+                <div class="ut-stat-row">
+                  <div class="ut-stat-card"><div class="ut-stat-num">38%</div><div class="ut-stat-lbl">&#xD575;&#xC2EC; &#xD0DC;&#xC2A4;&#xD06C;(T1)<br>&#xC138;&#xC158; &#xC644;&#xB8CC;&#xC728;</div></div>
+                  <div class="ut-stat-card"><div class="ut-stat-num">78%</div><div class="ut-stat-lbl">&#xD0ED; &#xD0D0;&#xC0C9; &#xAD6C;&#xAC04;<br>&#xD5C8;&#xB4E4; &#xBC1C;&#xC0DD;&#xB960;</div></div>
+                  <div class="ut-stat-card"><div class="ut-stat-num">2.7<small>&#xD68C;</small></div><div class="ut-stat-lbl">&#xC138;&#xC158;&#xB2F9; &#xD3C9;&#xADE0;<br>&#xD5C8;&#xB4E4; &#xBC1C;&#xC0DD;</div></div>
+                </div>
+                <div class="ut-key-insight"><span class="ut-insight-dot"></span>&#xD575;&#xC2EC; &#xD5C8;&#xB4E4; &#xAD6C;&#xAC04;: <strong>&#x2018;&#xD0ED; &#xD0D0;&#xC0C9; &rarr; &#xAE30;&#xB2A5; &#xC9C4;&#xC785;&#x2019;</strong> &mdash; &#xC9C4;&#xC785; &#xC9C1;&#xD6C4; &#xD575;&#xC2EC; &#xAE30;&#xB2A5; &#xACBD;&#xB85C; &#xC774;&#xD0C8; &#xC9D1;&#xC911;</div>
+              </div>
+              <div class="ut-box-card">
+                <div class="ut-box-title"><b>&#xBC18;&#xC751;&#xC720;&#xD615; &#xBD84;&#xD3EC;</b> <span style="font-size:10px;color:#aaa;font-weight:400;">&#xC804;&#xCCB4; &#xD3C9;&#xADE0;</span></div>
+                <div class="ut-donut-layout">
+                  <svg viewBox="0 0 120 120" width="108" height="108" style="flex-shrink:0;">
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#e8f0ff" stroke-width="18"/>
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#0057FF" stroke-width="18" stroke-dasharray="105.6 158.4" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#6fb0ff" stroke-width="18" stroke-dasharray="68.6 195.4" stroke-dashoffset="-105.6" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#ffa94d" stroke-width="18" stroke-dasharray="55.4 208.6" stroke-dashoffset="-174.2" transform="rotate(-90 60 60)"/>
+                    <circle cx="60" cy="60" r="42" fill="none" stroke="#ff6b6b" stroke-width="18" stroke-dasharray="34.3 229.7" stroke-dashoffset="-229.6" transform="rotate(-90 60 60)"/>
+                    <text x="60" y="56" text-anchor="middle" font-size="15" font-weight="800" fill="#111827">40%</text>
+                    <text x="60" y="70" text-anchor="middle" font-size="9" fill="#888">&#xC644;&#xB8CC;</text>
+                  </svg>
+                  <div class="ut-donut-legend">
+                    <div class="ut-leg"><span class="ut-dot" style="background:#0057FF;"></span><span>&#xC644;&#xB8CC; <strong>40%</strong></span></div>
+                    <div class="ut-leg"><span class="ut-dot" style="background:#6fb0ff;"></span><span>&#xC9C0;&#xC5F0;&#xC644;&#xB8CC; <strong>26%</strong></span></div>
+                    <div class="ut-leg"><span class="ut-dot" style="background:#ffa94d;"></span><span>&#xC911;&#xB2E8; <strong>21%</strong></span></div>
+                    <div class="ut-leg"><span class="ut-dot" style="background:#ff6b6b;"></span><span>&#xD3EC;&#xAE30; <strong>13%</strong></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ut-box-card">
+              <div class="ut-box-title"><b>&#xC0AC;&#xC6A9;&middot;&#xC774;&#xD574;&middot;&#xD750;&#xB984; &#xD5C8;&#xB4E4;</b> &mdash; &#xB2E8;&#xACC4;&#xBCC4; &#xD5C8;&#xB4E4; &#xD788;&#xD2B8;&#xB9F5; &middot; &#xD5C8;&#xB4E4; &#xBC1C;&#xC0DD; &#xBE48;&#xB3C4;</div>
+              <div class="ut-hm-wrap">
+                <div class="ut-hm-row">
+                  <div class="ut-hm-task"></div>
+                  <div class="ut-hm-hd">&#xD648; &#xC9C4;&#xC785;</div><div class="ut-hm-hd">&#xD0ED; &#xD0D0;&#xC0C9;</div><div class="ut-hm-hd">&#xAE30;&#xB2A5; &#xC9C4;&#xC785;</div><div class="ut-hm-hd">&#xC785;&#xB825;&middot;&#xD0D0;&#xC0C9;</div><div class="ut-hm-hd">&#xC644;&#xB8CC;</div>
+                </div>
+                <div class="ut-hm-row">
+                  <div class="ut-hm-task"><span>T1</span> &#xACBD;&#xC870;&#xAE08; &#xB4F1;&#xB85D;</div>
+                  <div class="ut-hm-cell" style="--h:0.10">10%</div><div class="ut-hm-cell" style="--h:0.78">78%</div><div class="ut-hm-cell" style="--h:0.62">62%</div><div class="ut-hm-cell" style="--h:0.31">31%</div><div class="ut-hm-cell" style="--h:0.12">12%</div>
+                </div>
+                <div class="ut-hm-row">
+                  <div class="ut-hm-task"><span>T2</span> &#xACFC;&#xAC70;&#xB0B4;&#xC5ED; &#xC870;&#xD68C;</div>
+                  <div class="ut-hm-cell" style="--h:0.08">8%</div><div class="ut-hm-cell" style="--h:0.76">76%</div><div class="ut-hm-cell" style="--h:0.58">58%</div><div class="ut-hm-cell" style="--h:0.71">71%</div><div class="ut-hm-cell" style="--h:0.18">18%</div>
+                </div>
+                <div class="ut-hm-row">
+                  <div class="ut-hm-task"><span>T3</span> &#xCD08;&#xB300;&#xC7A5; &#xC0DD;&#xC131;</div>
+                  <div class="ut-hm-cell" style="--h:0.09">9%</div><div class="ut-hm-cell" style="--h:0.41">41%</div><div class="ut-hm-cell" style="--h:0.28">28%</div><div class="ut-hm-cell" style="--h:0.35">35%</div><div class="ut-hm-cell" style="--h:0.07">7%</div>
+                </div>
+                <div class="ut-hm-foot"><span>&#xB099;&#xC74C;</span><div class="ut-hm-grad"></div><span>&#xB192;&#xC74C;</span><span class="ut-hm-note">&#xC218;&#xCE58; = &#xD574;&#xB2F9; &#xB2E8;&#xACC4; &#xD5C8;&#xB4E4; &#xBC1C;&#xC0DD; &#xBE48;&#xB3C4;</span></div>
+              </div>
+            </div>
+            <div class="ut-box-card">
+              <div class="ut-box-title"><b>&#xACE0;&#xAC1D;&#xC5EC;&#xC815; &#xAC10;&#xC131; &#xACE1;&#xC120;</b> <span style="font-size:10px;color:#aaa;font-weight:400;">&#x2014; T1 &#xACBD;&#xC870;&#xAE08; &#xB4F1;&#xB85D; &#xAE30;&#xC900;</span></div>
+              <div class="ut-journey-wrap">
+                <svg viewBox="0 0 470 175" width="100%" height="auto" style="overflow:visible;min-width:320px;">
+                  <line x1="26" y1="22" x2="458" y2="22" stroke="#e8f0ff" stroke-width="1"/>
+                  <line x1="26" y1="90" x2="458" y2="90" stroke="#e0e8f0" stroke-width="1" stroke-dasharray="4,4"/>
+                  <line x1="26" y1="158" x2="458" y2="158" stroke="#e8f0ff" stroke-width="1"/>
+                  <text x="22" y="26" font-size="8" fill="#bbb" text-anchor="end">&#xAE4D;&#xC815;</text>
+                  <text x="22" y="94" font-size="8" fill="#ddd" text-anchor="end">&#xC911;&#xB9BD;</text>
+                  <text x="22" y="162" font-size="8" fill="#bbb" text-anchor="end">&#xBD80;&#xC815;</text>
+                  <rect x="118" y="22" width="56" height="136" fill="rgba(255,107,107,0.06)" rx="4"/>
+                  <path d="M30,65 C55,65 70,78 95,78 C120,78 133,104 158,104 C183,104 197,71 222,71 C247,71 262,88 287,88 C312,88 330,69 353,69 C376,69 395,44 420,44 L420,158 L30,158 Z" fill="rgba(0,87,255,0.05)"/>
+                  <path d="M30,65 C55,65 70,78 95,78 C120,78 133,104 158,104 C183,104 197,71 222,71 C247,71 262,88 287,88 C312,88 330,69 353,69 C376,69 395,44 420,44" fill="none" stroke="#0057FF" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M30,65 C55,65 70,78 95,78 C118,78 132,104 155,104 L175,116" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,3" stroke-linecap="round"/>
+                  <circle cx="175" cy="116" r="4.5" fill="#ff6b6b"/>
+                  <text x="179" y="112" font-size="9" fill="#ff6b6b" font-weight="600">&#xC774;&#xD0C8;</text>
+                  <circle cx="30" cy="65" r="4" fill="white" stroke="#0057FF" stroke-width="2"/>
+                  <circle cx="95" cy="78" r="4" fill="white" stroke="#0057FF" stroke-width="2"/>
+                  <circle cx="158" cy="104" r="4.5" fill="#ffece8" stroke="#ff6b6b" stroke-width="2"/>
+                  <circle cx="222" cy="71" r="4" fill="white" stroke="#0057FF" stroke-width="2"/>
+                  <circle cx="287" cy="88" r="4" fill="white" stroke="#0057FF" stroke-width="2"/>
+                  <circle cx="353" cy="69" r="4" fill="white" stroke="#0057FF" stroke-width="2"/>
+                  <circle cx="420" cy="44" r="5.5" fill="#0057FF" stroke="#0057FF" stroke-width="2"/>
+                  <text x="30" y="172" font-size="9" fill="#777" text-anchor="middle">&#xD648; &#xC9C4;&#xC785;</text>
+                  <text x="95" y="172" font-size="9" fill="#777" text-anchor="middle">5&#xD0ED; &#xC778;&#xC9C0;</text>
+                  <text x="158" y="172" font-size="9" fill="#e05555" text-anchor="middle" font-weight="600">&#xD0ED; &#xD0D0;&#xC0C9;</text>
+                  <text x="222" y="172" font-size="9" fill="#777" text-anchor="middle">&#xAC00;&#xACC4;&#xBD80; &#xBC1C;&#xACAC;</text>
+                  <text x="287" y="172" font-size="9" fill="#777" text-anchor="middle">&#xB4F1;&#xB85D;&#xBC84;&#xD2BC; &#xD0D0;&#xC0C9;</text>
+                  <text x="353" y="172" font-size="9" fill="#777" text-anchor="middle">&#xD3FC; &#xC785;&#xB825;</text>
+                  <text x="420" y="172" font-size="9" fill="#0057FF" text-anchor="middle" font-weight="600">&#xB4F1;&#xB85D; &#xC644;&#xB8CC;</text>
+                  <line x1="26" y1="14" x2="44" y2="14" stroke="#0057FF" stroke-width="2"/>
+                  <circle cx="35" cy="14" r="3" fill="white" stroke="#0057FF" stroke-width="1.5"/>
+                  <text x="47" y="17" font-size="9" fill="#555">&#xC644;&#xB8CC; &#xACBD;&#xB85C;</text>
+                  <line x1="108" y1="14" x2="126" y2="14" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="4,2"/>
+                  <text x="130" y="17" font-size="9" fill="#555">&#xC774;&#xD0C8; &#xACBD;&#xB85C;</text>
+                </svg>
+              </div>
+            </div>
+          </div><!-- /ut-ai-block -->
+<div class="conclusion-banner">
             <p><strong>결론</strong> — 유저의 핵심 가치는 <strong>'과거 경조금 내역에 대한 기록과 확인'</strong>에 집중되어 있지만, 다양한 기능을 제공하고자 하는 고객 동선이 오히려 핵심 기능 이용을 방해하고 있었습니다.</p>
           </div>
         </div>
