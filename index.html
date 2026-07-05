@@ -1447,6 +1447,14 @@ body::before,body::after{display:none;}
 .cb-metric-val[style*="#7cb8f2"]{color:#dceeb1 !important;}
 /* 퍼널 col-high 그라데이션 바램 교정 */
 .wc2-dr-bar.col-high{background:#a121ce;}
+
+/* ══════════════════════════════════════════
+   v1.40 레이어 수정 — 다크 배너 그림자가 하위 박스를 덮던 문제
+   ══════════════════════════════════════════ */
+/* svc-block(흰 서비스 소개 박스)을 case-ov 위 스택으로 → 그림자가 박스 뒤로 */
+.svc-block{position:relative;z-index:2;}
+/* case-ov 하향 그림자 완화(위쪽 tuck 그림자는 유지) */
+.case-ov{box-shadow:0 -6px 14px rgba(5,10,13,0.45),0 10px 26px rgba(10,19,23,0.18);}
 </style>
 </head>
 <body>
