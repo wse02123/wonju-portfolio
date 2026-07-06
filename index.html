@@ -2406,11 +2406,14 @@ body::before,body::after{display:none;}
   /* ── RETURN FROM DETAIL (skip intro) ── */
   var _hashTarget = window.location.hash.replace('#','');
   var _sectionHashes = ['hero','stats','case','skills','ai','outro'];
+  var _detailHashes = ['persona','team','assistant'];
   var _isHashNav = _sectionHashes.indexOf(_hashTarget) > -1;
+  var _isDetailNav = _detailHashes.indexOf(_hashTarget) > -1;
+  var _isWeCheck = (_hashTarget === 'wecheck' || _hashTarget === 'case2');
   var _returnFromDetail = ssGet('returnFromDetail')==='1';
   var _savedScrollY = parseInt(ssGet('scrollY')||'0',10);
   if(_returnFromDetail){ ssRemove('returnFromDetail'); ssRemove('scrollY'); }
-  var _skipIntro = _returnFromDetail || _isHashNav;
+  var _skipIntro = _returnFromDetail || _isHashNav || _isDetailNav || _isWeCheck;
 
   /* ── SCROLL LOCK ── */
   if(!_skipIntro){
@@ -2491,7 +2494,14 @@ body::before,body::after{display:none;}
       var el=document.getElementById(id); if(el) el.classList.add('show');
     });
     setTimeout(function(){
-      if(_isHashNav && _hashTarget !== 'hero'){
+      if(_isWeCheck){
+        var caseEl = document.getElementById('case');
+        if(caseEl) caseEl.scrollIntoView({behavior:'auto'});
+        try{ var cards=document.querySelectorAll('#case .cs-card'); if(cards[1] && window.switchCase) window.switchCase(1, cards[1]); }catch(e){}
+      } else if(_isDetailNav){
+        var aiEl = document.getElementById('ai');
+        if(aiEl) aiEl.scrollIntoView({behavior:'auto'});
+      } else if(_isHashNav && _hashTarget !== 'hero'){
         var targetEl = document.getElementById(_hashTarget);
         if(targetEl) targetEl.scrollIntoView({behavior:'auto'});
       } else {
@@ -2894,9 +2904,16 @@ function openDetail(id){
 }
 function closeDetail(){
   document.getElementById('detail-layer').style.display = 'none';
-  var savedY = parseInt(_ssGet('detailScrollY')||'0', 10);
-  _ssDel('detailScrollY');
-  window.scrollTo(0, savedY);
+  var rt = _ssGet('detailReturnTo');
+  if(rt){
+    _ssDel('detailReturnTo'); _ssDel('detailScrollY');
+    var el = document.getElementById(rt);
+    if(el){ el.scrollIntoView({behavior:'auto'}); } else { window.scrollTo(0,0); }
+  } else {
+    var savedY = parseInt(_ssGet('detailScrollY')||'0', 10);
+    _ssDel('detailScrollY');
+    window.scrollTo(0, savedY);
+  }
   _pushState(null, window.location.pathname);
   document.title = '정원주 — Product Owner Portfolio';
 }
@@ -2907,7 +2924,10 @@ window.addEventListener('popstate', function(){
 /* Open detail on hash load */
 (function(){
   var hash = window.location.hash.replace('#','');
-  if(['persona','team','assistant'].indexOf(hash) > -1){ openDetail(hash); }
+  if(['persona','team','assistant'].indexOf(hash) > -1){
+    openDetail(hash);
+    _ssSet('detailReturnTo','ai'); /* 딥링크 진입 → 닫으면 AI 섹션으로 복귀 */
+  }
 })();
 </script>
 <!-- Vercel Web Analytics -->
