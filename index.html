@@ -190,12 +190,16 @@ section{position:relative;}
   border-radius:10px;padding:9px 14px;
   white-space:normal;width:max-content;max-width:min(82vw,340px);
   font-size:12px;font-weight:500;line-height:1.5;
-  color:rgba(255,255,255,0.88);letter-spacing:0.01em;
+  color:#fff;letter-spacing:0.01em;
   pointer-events:none;opacity:0;
   transition:opacity 0.22s ease,transform 0.22s cubic-bezier(0.22,1,0.36,1);
   box-shadow:0 8px 24px rgba(10,19,23,0.24),inset 0 1px 0 rgba(255,255,255,0.07);
   z-index:200;
 }
+.info-value .how-tooltip.how-tooltip-grouped{display:flex;flex-direction:column;gap:10px;text-align:left;}
+.info-value .how-tooltip .ht-row{display:flex;flex-direction:column;gap:2px;}
+.info-value .how-tooltip .ht-cat{display:block;font-size:11px;font-weight:800;letter-spacing:0.05em;color:#7cb8f2;}
+.info-value .how-tooltip .ht-list{display:block;font-size:12px;font-weight:500;color:#fff;}
 .info-value .how-tooltip::after{
   content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
   border:5px solid transparent;border-top-color:rgba(10,19,23,0.94);
@@ -1541,7 +1545,7 @@ body::before,body::after{display:none;}
         <div class="info-value">
           <div class="how-lead"><span>사용자와 동료들에게 가장 쉬운 해답을 제시하기 위해,</span><br><strong>기획과 AI 도구를 계속해서 학습</strong><span>합니다.</span></div>
           <div class="how-chips">
-          <span class="how-chip">서비스 설계<span class="how-chip-icon">+</span><span class="how-tooltip">Figma &nbsp;·&nbsp; Adobe XD &nbsp;·&nbsp; PPT &nbsp;·&nbsp; Notion</span></span><span style="color:var(--text);font-weight:400;font-size:0.88em;"> &nbsp;·&nbsp; </span><span class="how-chip">데이터 분석<span class="how-chip-icon">+</span><span class="how-tooltip">Amplitude &nbsp;·&nbsp; GA4 &nbsp;·&nbsp; SQL &nbsp;·&nbsp; HeatMap</span></span><span style="color:var(--text);font-weight:400;font-size:0.88em;"> &nbsp;·&nbsp; </span><span class="how-chip">AI 활용<span class="how-chip-icon">+</span><span class="how-tooltip">Claude &nbsp;·&nbsp; Codex &nbsp;·&nbsp; Antigravity &nbsp;·&nbsp; NoteBookLM &nbsp;·&nbsp; n8n &nbsp;·&nbsp; OpenAI API &nbsp;·&nbsp; Gemini API</span></span>
+          <span class="how-chip">서비스 설계<span class="how-chip-icon">+</span><span class="how-tooltip">Figma &nbsp;·&nbsp; Adobe XD &nbsp;·&nbsp; PPT &nbsp;·&nbsp; Notion</span></span><span style="color:var(--text);font-weight:400;font-size:0.88em;"> &nbsp;·&nbsp; </span><span class="how-chip">데이터 분석<span class="how-chip-icon">+</span><span class="how-tooltip">Amplitude &nbsp;·&nbsp; GA4 &nbsp;·&nbsp; SQL &nbsp;·&nbsp; HeatMap</span></span><span style="color:var(--text);font-weight:400;font-size:0.88em;"> &nbsp;·&nbsp; </span><span class="how-chip">AI 활용<span class="how-chip-icon">+</span><span class="how-tooltip how-tooltip-grouped"><span class="ht-row"><span class="ht-cat">코딩 에이전트</span><span class="ht-list">Claude · Codex · Antigravity</span></span><span class="ht-row"><span class="ht-cat">자동화·데이터관리</span><span class="ht-list">n8n · Obsidian</span></span><span class="ht-row"><span class="ht-cat">자료 제작</span><span class="ht-list">Manus · Genspark · NotebookLM</span></span><span class="ht-row"><span class="ht-cat">생성형 AI 연동</span><span class="ht-list">OpenAI API · Gemini API · Suno · Higgsfield</span></span></span></span><span style="color:var(--text);font-weight:400;font-size:0.88em;"> &nbsp;·&nbsp; </span><span class="how-chip">바이브코딩 서비스 운영<span class="how-chip-icon">+</span><span class="how-tooltip how-tooltip-grouped"><span class="ht-row"><span class="ht-cat">형상관리</span><span class="ht-list">Github</span></span><span class="ht-row"><span class="ht-cat">배포·도메인</span><span class="ht-list">Vercel · Gabia</span></span><span class="ht-row"><span class="ht-cat">서버·DB 관리</span><span class="ht-list">Oracle · AWS · Docker · Supabase</span></span><span class="ht-row"><span class="ht-cat">모니터링</span><span class="ht-list">Slack · Telegram</span></span></span></span>
           </div>
         </div>
       </div>
@@ -2549,14 +2553,16 @@ body::before,body::after{display:none;}
     typeOut(phrases[0], function(){
       typeDel(phrases[0], function(){
         typeOut(phrases[1], function(){
+          if(_introFinished) return;
           var remaining = TOTAL - (Date.now() - _startTime);
           setTimeout(function(){
+            if(_introFinished) return;
             setTimeout(function(){
+              if(_introFinished) return;
               document.getElementById('intro').classList.add('exit');
               setTimeout(function(){
-                document.getElementById('intro').style.display = 'none';
-                document.documentElement.style.overflow = '';
-                document.body.style.overflow = '';
+                if(_introFinished) return;
+                finishIntroImmediately();
                 triggerHero();
               }, 730);
             }, 180);
@@ -2566,16 +2572,26 @@ body::before,body::after{display:none;}
     });
   }
 
-  /* ── 안전망: 인트로/애니메이션 실패·지연 시에도 히어로 강제 노출 + 스크롤 잠금 해제 ── */
-  setTimeout(function(){
+  /* ── 탭이 백그라운드로 가면 rAF가 멈춰 타이핑 인트로가 얼어붙고, 복귀 시 진행바(CSS transition)와
+     어긋나 상태가 꼬이는 문제 방지 — 탭이 숨겨지는 즉시 인트로를 완료 처리 ── */
+  var _introFinished = _skipIntro;
+  function finishIntroImmediately(){
+    if(_introFinished) return;
+    _introFinished = true;
     var intro = document.getElementById('intro');
-    if(intro && intro.style.display !== 'none'){ intro.style.display='none'; }
+    if(intro) intro.style.display = 'none';
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     ['eyebrow','heroName','ir0','ir1','irW','ir2','accentBox','scrollCue'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.classList.add('show');
+      var el = document.getElementById(id); if(el) el.classList.add('show');
     });
-  }, _skipIntro ? 300 : 9000);
+  }
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && !_introFinished) finishIntroImmediately();
+  });
+
+  /* ── 안전망: 인트로/애니메이션 실패·지연 시에도 히어로 강제 노출 + 스크롤 잠금 해제 ── */
+  setTimeout(finishIntroImmediately, _skipIntro ? 300 : 9000);
 
   /* ── STATS COUNTER ── */
   function animateCounter(el){
