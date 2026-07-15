@@ -137,6 +137,14 @@ section{position:relative;}
   background:#ffffff;
 }
 #hero::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background-image:linear-gradient(rgba(0,100,224,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,100,224,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+/* 히어로 배경 — 의도 "복잡함을 정돈된 질서로": 기존 격자의 교차점 도트가 좌상→우하 대각선으로
+   순차 점등되며 격자가 살아나는 웨이브. 텍스트 구역(중앙)은 radial 마스크로 비워 여백에만 또렷 */
+.hero-grid-dots{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:radial-gradient(ellipse 52% 58% at 50% 50%,transparent 0%,transparent 36%,#000 74%);
+  mask-image:radial-gradient(ellipse 52% 58% at 50% 50%,transparent 0%,transparent 36%,#000 74%);}
+.hero-grid-dots circle{fill:#0064e0;opacity:0;animation:gridWave 13s ease-in-out infinite;}
+@keyframes gridWave{0%,100%{opacity:0;}5%{opacity:0.5;}14%{opacity:0;}}
+@media (prefers-reduced-motion:reduce){.hero-grid-dots circle{animation:none;opacity:0.12;}}
 #scan-line{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 0%,rgba(0,100,224,0.3) 20%,#0064e0 50%,rgba(0,100,224,0.3) 80%,transparent 100%);box-shadow:0 0 40px 8px rgba(0,100,224,0.25);transform:translateY(-4px);z-index:20;pointer-events:none;}
 #scan-fill{position:absolute;top:0;left:0;right:0;height:0;background:linear-gradient(to bottom,rgba(0,100,224,0.04) 0%,transparent 100%);z-index:19;pointer-events:none;}
 @keyframes scanDown{0%{transform:translateY(0);}100%{transform:translateY(100vh);}}
@@ -851,6 +859,20 @@ section{position:relative;}
 }
 #ai::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;border-radius:32px 32px 0 0;background-image:linear-gradient(rgba(124,184,242,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,184,242,0.05) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;}
 #ai::after{content:'';position:absolute;top:0;left:0;right:0;height:340px;background:radial-gradient(ellipse 70% 100% at 50% -10%,rgba(124,184,242,0.16),transparent);pointer-events:none;}
+/* AI 섹션 배경 — 의도 "흩어진 도구를 하나로 연결": 점과 점 사이 선이 폭죽처럼 랜덤 타이밍으로
+   개별로 뻗어나갔다(끝점 반짝) 사라짐. 화면 전체에 무분별하게 연결. (카드가 자동 마스킹) */
+.ai-net{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.ai-net svg{width:100%;height:100%;}
+/* 노드 — 별처럼 트윙클 + 은은한 글로우 */
+.ai-net .node{fill:#bcdcff;filter:drop-shadow(0 0 3px rgba(158,203,255,0.8));animation:starTwinkle var(--d,4s) ease-in-out infinite;}
+@keyframes starTwinkle{0%,100%{opacity:0.25;}50%{opacity:0.92;}}
+/* 뻗어나가는 선 — dashoffset로 draw, 개별 생명주기 */
+.ai-net .fx-edge{stroke:#9ecbff;stroke-width:1.4;fill:none;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;filter:drop-shadow(0 0 2px rgba(158,203,255,0.6));animation:fxDraw var(--life,2.4s) ease-out forwards;}
+@keyframes fxDraw{0%{stroke-dashoffset:1;opacity:0;}10%{opacity:0.65;}32%{stroke-dashoffset:0;opacity:0.6;}68%{stroke-dashoffset:0;opacity:0.5;}100%{stroke-dashoffset:0;opacity:0;}}
+/* 뻗어나가는 끝의 반짝(spark) — 선 진행 끝을 따라가며 폭죽처럼 밝게 */
+.ai-net .fx-spark{fill:#eaf4ff;filter:drop-shadow(0 0 7px rgba(200,225,255,0.95));animation:fxSpark var(--life,2.4s) ease-out forwards;}
+@keyframes fxSpark{0%{opacity:0;transform:translate(0,0);}10%{opacity:1;}32%{opacity:1;transform:translate(var(--dx),var(--dy));}46%{opacity:0;transform:translate(var(--dx),var(--dy));}100%{opacity:0;}}
+@media (prefers-reduced-motion:reduce){.ai-net .node{animation:none;opacity:0.55;}}
 #ai .section-inner{z-index:1;}
 #ai .sl{color:#7cb8f2;}
 #ai .sl .t5{color:#7cb8f2;}
@@ -1592,6 +1614,7 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
 <section id="hero">
   <div id="scan-line"></div>
   <div id="scan-fill"></div>
+  <div class="hero-grid-dots" aria-hidden="true"><svg preserveAspectRatio="none"></svg></div>
   <div class="hero-layout">
     <div class="hero-left">
       <div class="hero-deco hero-deco-top" aria-hidden="true"></div>
@@ -2395,6 +2418,12 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
 <!-- AI (V1) -->
 <section id="ai">
   <div class="section-diamond" id="aiDiamond"></div>
+  <div class="ai-net" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+      <g class="fx-layer"></g>
+      <g class="node-layer"></g>
+    </svg>
+  </div>
   <div class="section-inner">
     <div class="sl"><span class="t5">AI Utilization</span></div>
     <h2 class="t2 masked-title" style="margin-bottom:18px;">AI 활용 역량</h2>
@@ -3690,5 +3719,97 @@ window.addEventListener('popstate', function(){
 function openCaseLb(el){var img=el.querySelector('img');if(!img)return;var l=document.getElementById('lb-case');document.getElementById('lb-case-img').src=img.src;l.classList.add('open');document.body.style.overflow='hidden';}
 function closeCaseLb(){var l=document.getElementById('lb-case');if(l){l.classList.remove('open');}document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCaseLb();});
-</script></body>
+</script>
+<script>
+/* 히어로 배경 격자 도트 생성 — 기존 60px 격자 교차점에 정확히 정렬. 대각선 위상차로 웨이브 점등 */
+(function(){
+  var host=document.querySelector('.hero-grid-dots');
+  if(!host) return;
+  var svg=host.querySelector('svg');
+  function build(){
+    var W=host.clientWidth, H=host.clientHeight, G=60;
+    if(!W||!H){ return; }
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    var f='';
+    for(var y=G;y<=H-4;y+=G){
+      for(var x=G;x<=W-4;x+=G){
+        /* 양수 delay: 첫 랜딩 때 아무 점도 안 켜진 상태에서 좌상단부터 순차 등장 → 밴드가 화면 밖(좌상)에서 진입 */
+        var sum=(x/G)+(y/G);
+        var ph=(sum*0.17);
+        f+='<circle cx="'+x+'" cy="'+y+'" r="2.2" style="animation-delay:'+ph.toFixed(2)+'s"/>';
+      }
+    }
+    svg.innerHTML=f;
+  }
+  build();
+  var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(build,250); });
+})();
+
+/* AI 섹션 — 폭죽처럼 랜덤 타이밍으로 개별 선이 뻗어나가는(끝 반짝) 무한 연결.
+   viewBox를 실제 픽셀로 맞춰 spark의 CSS transform(px)과 좌표를 1:1 정렬 */
+(function(){
+  var host=document.querySelector('.ai-net');
+  if(!host) return;
+  var svg=host.querySelector('svg');
+  var ns='http://www.w3.org/2000/svg';
+  var fxLayer=svg.querySelector('.fx-layer');
+  var nodeLayer=svg.querySelector('.node-layer');
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var NODES=[], running=false;
+  function rnd(a,b){ return a+Math.random()*(b-a); }
+  function neighbors(i){
+    var a=NODES[i], out=[];
+    for(var j=0;j<NODES.length;j++){ if(j===i) continue;
+      var dx=NODES[j].x-a.x, dy=NODES[j].y-a.y, d=Math.sqrt(dx*dx+dy*dy);
+      if(d>90 && d<430) out.push(j);
+    }
+    return out;
+  }
+  function buildNodes(){
+    var W=host.clientWidth, H=host.clientHeight;
+    if(!W||!H) return;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    nodeLayer.innerHTML=''; fxLayer.innerHTML=''; NODES=[];
+    var count=Math.round(W*H/46000); if(count<18) count=18; if(count>40) count=40;
+    for(var i=0;i<count;i++){
+      var nx=rnd(40,W-40), nyy=rnd(30,H-30);
+      NODES.push({x:nx,y:nyy});
+      var c=document.createElementNS(ns,'circle');
+      c.setAttribute('class','node');
+      c.setAttribute('cx',nx.toFixed(1)); c.setAttribute('cy',nyy.toFixed(1));
+      c.setAttribute('r',(2.2+Math.random()*1.6).toFixed(1));
+      c.style.setProperty('--d',(3.2+Math.random()*2.4).toFixed(1)+'s');
+      c.style.animationDelay=(Math.random()*3.5).toFixed(1)+'s';
+      nodeLayer.appendChild(c);
+    }
+  }
+  function spawn(){
+    if(!running) return;
+    var i=Math.floor(Math.random()*NODES.length), nb=neighbors(i);
+    if(nb.length){
+      var j=nb[Math.floor(Math.random()*nb.length)], a=NODES[i], b=NODES[j];
+      var life=rnd(1.5,3.0);
+      var line=document.createElementNS(ns,'line');
+      line.setAttribute('class','fx-edge'); line.setAttribute('pathLength','1');
+      line.setAttribute('x1',a.x.toFixed(1)); line.setAttribute('y1',a.y.toFixed(1));
+      line.setAttribute('x2',b.x.toFixed(1)); line.setAttribute('y2',b.y.toFixed(1));
+      line.style.setProperty('--life',life.toFixed(2)+'s');
+      var spark=document.createElementNS(ns,'circle');
+      spark.setAttribute('class','fx-spark');
+      spark.setAttribute('cx',a.x.toFixed(1)); spark.setAttribute('cy',a.y.toFixed(1));
+      spark.setAttribute('r','2.8');
+      spark.style.setProperty('--dx',(b.x-a.x).toFixed(1)+'px');
+      spark.style.setProperty('--dy',(b.y-a.y).toFixed(1)+'px');
+      spark.style.setProperty('--life',life.toFixed(2)+'s');
+      fxLayer.appendChild(line); fxLayer.appendChild(spark);
+      setTimeout(function(){ line.remove(); spark.remove(); }, life*1000+150);
+    }
+    setTimeout(spawn, 150+Math.random()*420);
+  }
+  buildNodes();
+  if(!reduce){ running=true; spawn(); }
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(buildNodes,300); });
+})();
+</script>
+</body>
 </html>
