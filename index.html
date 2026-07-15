@@ -110,14 +110,20 @@ section{position:relative;}
 /* ━━━━━━━━━━━━━━━━━━━━━━━━
    INTRO
 ━━━━━━━━━━━━━━━━━━━━━━━━ */
-#intro{position:fixed;top:0;right:0;bottom:0;left:0;z-index:9999;background:#0b1b33;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
+#intro{position:fixed;top:0;right:0;bottom:0;left:0;z-index:9999;background:#0b1b33;display:flex;align-items:flex-start;justify-content:flex-end;flex-direction:column;gap:10px;overflow:hidden;padding:0 clamp(28px,9vw,140px) clamp(64px,12vh,120px);}
 #intro.exit{animation:iExit 0.72s cubic-bezier(0.76,0,0.24,1) forwards;}
 @keyframes iExit{to{transform:translateY(-100%);}}
-.type-prefix{font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,163,255,0.5);margin-bottom:8px;display:block;text-align:center;}
-.type-line{font-size:clamp(18px,2.8vw,46px);font-weight:700;color:rgba(255,255,255,0.9);text-align:center;min-height:1.5em;line-height:1.5;max-width:80vw;}
+/* 힉스필드 실사 영상 — 시네마틱 로워서드 배경. 영상은 full로 깔리고, 좌하단 자막존은 오버레이로 어둡게 눌러 가독성 확보 */
+.intro-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;z-index:0;pointer-events:none;opacity:0;filter:brightness(0.72) contrast(1.05);transition:opacity 1.2s ease-in;}
+.intro-bg-video.vid-on{opacity:0.9;}
+/* 좌하단(자막존)은 진한 네이비, 우상단(영상 주요부)도 어느정도 눌러 전체적으로 어둡게 */
+#intro::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top right,rgba(11,27,51,0.97) 0%,rgba(11,27,51,0.82) 24%,rgba(11,27,51,0.5) 50%,rgba(11,27,51,0.28) 74%,rgba(11,27,51,0.18) 100%);}
+.type-prefix{font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(0,163,255,0.65);display:block;text-align:left;position:relative;z-index:2;padding-left:18px;}
+.type-prefix::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:2px;background:#0064e0;}
+.type-line{font-size:clamp(22px,3vw,42px);font-weight:700;color:rgba(255,255,255,0.96);text-align:left;min-height:2.9em;line-height:1.45;max-width:min(880px,84vw);position:relative;z-index:2;text-shadow:0 1px 2px rgba(4,10,20,0.5);}
 .cursor{display:inline-block;width:3px;height:1em;background:#0064e0;vertical-align:text-bottom;margin-left:2px;animation:curBlink 0.7s step-end infinite;}
 @keyframes curBlink{0%,100%{opacity:1;}50%{opacity:0;}}
-.pbar-track{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.06);overflow:hidden;}
+.pbar-track{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.06);overflow:hidden;z-index:2;}
 .pbar-fill{position:absolute;top:0;right:0;bottom:0;left:0;background:#0064e0;transform:scaleX(0);transform-origin:left;box-shadow:0 0 6px rgba(0,100,224,0.30);}
 .pbar-fill::after{content:'';position:absolute;right:0;top:-2px;bottom:-2px;width:40px;background:linear-gradient(to right,transparent,rgba(124,184,242,0.6));pointer-events:none;}
 
@@ -1572,8 +1578,11 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
   <button class="cfn-btn" onclick="goCase(1)">UI→UX</button>
 </div>
 
-<!-- INTRO (V13_3 typewriter) -->
+<!-- INTRO (V13_3 typewriter + 힉스필드 실사 모션그래픽) -->
 <div id="intro">
+  <video class="intro-bg-video" autoplay muted playsinline>
+    <source src="higgsfield_intro.mp4" type="video/mp4">
+  </video>
   <span class="type-prefix">loading portfolio</span>
   <div class="type-line" id="typeLine"></div>
   <div class="pbar-track"><div class="pbar-fill" id="pbar"></div></div>
@@ -2577,8 +2586,8 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
     document.body.style.overflow = 'hidden';
   }
 
-  /* ── INTRO TYPEWRITER (V13_3) ── */
-  var TOTAL = 5500;
+  /* ── INTRO TYPEWRITER (V13_3) — 힉스필드 영상 6초(7초를 1.167배속). 앞/뒤 문장 3초씩 반반 배분 ── */
+  var TOTAL = 6000, HALF = 3000;
   var _startTime = Date.now();
   var pbar = document.getElementById('pbar');
   if(!_skipIntro){
@@ -2663,8 +2672,15 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
       }
     },60);
   } else {
+    /* 타이핑 시작과 동시에 배경 영상이 서서히 차오름 (미리 깔지 않음) */
+    var _bgVid = document.querySelector('.intro-bg-video');
+    if(_bgVid) requestAnimationFrame(function(){ _bgVid.classList.add('vid-on'); });
     typeOut(phrases[0], function(){
-      typeDel(phrases[0], function(){
+      /* 앞문장: 타이핑 후 t=HALF(3s) 시점에 삭제가 끝나도록 hold */
+      var _delDur = phrases[0].length * SPEED_DEL;
+      var _wait1 = HALF - _delDur - (Date.now() - _startTime);
+      setTimeout(function(){
+        typeDel(phrases[0], function(){
         typeOut(phrases[1], function(){
           if(_introFinished) return;
           var remaining = TOTAL - (Date.now() - _startTime);
@@ -2684,7 +2700,8 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             }, 180);
           }, Math.max(remaining, 0));
         });
-      });
+        });
+      }, Math.max(_wait1, 0));
     });
   }
 
