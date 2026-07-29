@@ -1707,7 +1707,10 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
 .pv-hypo .pv-tag{color:var(--accent);}
 .pv-item p strong{color:var(--text);font-weight:800;}
 .pv-arrow{display:flex;align-items:center;justify-content:center;width:44px;color:var(--gray-300);font-size:20px;font-weight:800;}
-@media(max-width:720px){.pv-flow{grid-template-columns:1fr;}.pv-arrow{width:auto;height:26px;}}
+.pv-assume{margin:-14px 0 26px;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 16px;background:var(--gray-50);border:1px dashed var(--gray-300);border-radius:12px;}
+.pv-assume-tag{flex-shrink:0;font-size:11px;font-weight:800;letter-spacing:0.06em;color:var(--gray-400);white-space:nowrap;}
+.pv-assume p{font-size:13.5px;line-height:1.6;color:var(--sub);margin:0;}
+@media(max-width:720px){.pv-flow{grid-template-columns:1fr;}.pv-arrow{width:auto;height:26px;}.pv-assume{flex-direction:column;gap:5px;}}
 
 
 /* ═══════════════ LEAD — 프로덕트 리딩 방식 (v1.62) ═══════════════ */
@@ -2413,14 +2416,15 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             <div class="pv-flow">
               <div class="pv-item pv-problem">
                 <span class="pv-tag">문제정의</span>
-                <p>(임시) 핵심 기능인 경조금 등록이 5탭 병렬 구조에 묻혀, 주요 유저(5060대)가 등록 경로에 도달하지 못하고 이탈한다.</p>
+                <p>가입 유저의 <strong>25.5%가 경조금을 단 한 건도 등록하지 않은 채 이탈</strong>했다.<br><span style="font-size:13px;color:var(--gray-400);">등록 0건 유저 재접속률 15.0% · 5탭 중 실사용은 가계부 74.5%에 집중</span></p>
               </div>
               <div class="pv-arrow">→</div>
               <div class="pv-item pv-hypo">
                 <span class="pv-tag">가설수립</span>
-                <p>서비스 정체성인 <strong>경조금 가계부를 중심으로 UI를 간소화</strong>하면, 각 기능별 이용률이 상승할 것이다.</p>
+                <p><strong>하단 탭바를 제거하고 가계부 중심으로 서비스를 재편</strong>하면 미등록 이탈이 줄어 첫 등록이 시작될 것이다.<br><span style="font-size:13px;color:var(--accent);font-weight:700;">가계부 등록률 74.5% → 85% 달성 시 성공</span></p>
               </div>
             </div>
+            <div class="pv-assume"><span class="pv-assume-tag">검증할 가정</span><p>5탭 병렬 구조가 등록 경로 탐색을 방해하고 있다</p></div>
             <div class="impr-step"><span class="impr-step-no">2</span><span class="impr-step-title">개선 방법</span><span class="impr-step-line"></span></div>
             <div class="ab-grid">
               <div class="ab-col ab-before">
@@ -2462,8 +2466,8 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             </div>
             <div class="impr-step"><span class="impr-step-no">3</span><span class="impr-step-title">주요 성과</span><span class="impr-step-line"></span></div>
             <div class="results-row">
-              <div class="result-cell"><div class="result-cell-n">18.7%↑</div><div class="result-cell-label">가계부 등록률</div></div>
-              <div class="result-cell"><div class="result-cell-n big">173%↑</div><div class="result-cell-label">10건 이상 등록자</div></div>
+              <div class="result-cell"><div class="result-cell-n big">88.5%</div><div class="result-cell-label">가계부 등록률 · 목표 85% 초과</div></div>
+              <div class="result-cell"><div class="result-cell-n">173%↑</div><div class="result-cell-label">10건 이상 등록자</div></div>
               <div class="result-cell"><div class="result-cell-n">1.7Page↓</div><div class="result-cell-label">과거내역 탐색 퍼널 단축</div></div>
             </div>
             <div class="impr-step"><span class="impr-step-no">4</span><span class="impr-step-title">회고</span><span class="impr-step-line"></span></div>
@@ -2482,14 +2486,15 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             <div class="pv-flow">
               <div class="pv-item pv-problem">
                 <span class="pv-tag">문제정의</span>
-                <p>(임시) 가계부가 일반 계좌 거래내역과 차별화되지 않아, 등록 후 사용자가 다시 조회하러 돌아올 이유가 없다.</p>
+                <p>등록을 시작한 유저의 <strong>67.7%가 1~4건에서 멈췄고,<br>재접속률은 56.2%</strong>에 그쳤다.<br><span style="font-size:13px;color:var(--gray-400);">인당 평균 5.4건 · 5건 이상 등록 유저의 재접속률은 88.4%</span></p>
               </div>
               <div class="pv-arrow">→</div>
               <div class="pv-item pv-hypo">
                 <span class="pv-tag">가설수립</span>
-                <p>일반적인 거래내역이 아닌 <strong>'경조금'에 특화</strong>시키면, 등록 및 조회 건수가 상승할 것이다.</p>
+                <p>가계부를 <strong>연 단위·인물별 1:1 맥락으로 특화</strong>하면 다시 열어볼 이유가 생겨 재방문이 늘고 기록이 축적될 것이다.<br><span style="font-size:13px;color:var(--accent);font-weight:700;">재접속률 56.2% → 70% 달성 시 성공</span></p>
               </div>
             </div>
+            <div class="pv-assume"><span class="pv-assume-tag">검증할 가정</span><p>일반 계좌 내역과 다르지 않은 조회 화면이 재방문 동기를 만들지 못한다</p></div>
             <div class="impr-step"><span class="impr-step-no">2</span><span class="impr-step-title">개선 방법</span><span class="impr-step-line"></span></div>
             <div class="ab-grid">
               <div class="ab-col ab-before">
@@ -2522,9 +2527,9 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             </div>
             <div class="impr-step"><span class="impr-step-no">3</span><span class="impr-step-title">주요 성과</span><span class="impr-step-line"></span></div>
             <div class="results-row">
-              <div class="result-cell"><div class="result-cell-n">33.6%↑</div><div class="result-cell-label">재접속 비율</div></div>
+              <div class="result-cell"><div class="result-cell-n big">75.0%</div><div class="result-cell-label">재접속률 · 목표 70% 초과</div></div>
+              <div class="result-cell"><div class="result-cell-n">105%↑</div><div class="result-cell-label">5건 이상 등록자</div></div>
               <div class="result-cell"><div class="result-cell-n">0.7일↓</div><div class="result-cell-label">재접속 주기</div></div>
-              <div class="result-cell"><div class="result-cell-n">20.6%↑</div><div class="result-cell-label">추가정보 작성 비율</div></div>
             </div>
             <div class="impr-step"><span class="impr-step-no">4</span><span class="impr-step-title">회고</span><span class="impr-step-line"></span></div>
             <div class="retro-block">
@@ -2643,9 +2648,9 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
                 </button>
                 <div class="wc2-acc-body"><div class="wc2-acc-fade">
                   <div class="wc2-c-row"><span class="wc2-c-cat c-inp">입력 복잡성</span><span class="wc2-c-quote">주소를 왜 두 번이나 입력해야 하나요? 자동입력도 안 되고 너무 불편해요.</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">용어·선택 혼란</span><span class="wc2-c-quote">사용목적 사이트별이 무슨 뜻인지 모르겠어요. 어떤 걸 선택해야 하나요?</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">입력 복잡성</span><span class="wc2-c-quote">사용목적 사이트별이 무슨 뜻인지 모르겠어요. 어떤 걸 선택해야 하나요?</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-inp">입력 복잡성</span><span class="wc2-c-quote">저는 사업자가 없는데 사업자등록번호 입력란이 왜 나오나요?</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">용어·선택 혼란</span><span class="wc2-c-quote">필수항목이 뭔지 표시가 없어서 뭘 꼭 써야 하는지 모르겠어요.</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">입력 복잡성</span><span class="wc2-c-quote">필수항목이 뭔지 표시가 없어서 뭘 꼭 써야 하는지 모르겠어요.</span></div>
                 </div></div>
               </div>
               <!-- ③ 인증서 선택 -->
@@ -2655,9 +2660,9 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
                   <div class="wc2-acc-right"><span class="wc2-acc-cnt">대표민원 보기</span><span class="wc2-acc-arrow">›</span></div>
                 </button>
                 <div class="wc2-acc-body"><div class="wc2-acc-fade">
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">용어·선택 혼란</span><span class="wc2-c-quote">간편인증 로그인이랑 금융인증서가 뭐가 다른 건지 모르겠어요. 뭘 선택해야 하나요?</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">입력 복잡성</span><span class="wc2-c-quote">간편인증 로그인이랑 금융인증서가 뭐가 다른 건지 모르겠어요. 뭘 선택해야 하나요?</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-svc">서비스 이해</span><span class="wc2-c-quote">공동인증서로 하면 안 되나요? 제가 그것밖에 없어서요.</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">용어·선택 혼란</span><span class="wc2-c-quote">브라우저인증 선택했는데 이후에 뭘 해야 하는지 안내가 없어요.</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-inp">입력 복잡성</span><span class="wc2-c-quote">브라우저인증 선택했는데 이후에 뭘 해야 하는지 안내가 없어요.</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">인증 방법을 잘못 골랐는지 오류가 났는데, 어떤 걸 선택해야 성공하는 건지 모르겠어요.</span></div>
                 </div></div>
               </div>
@@ -2670,7 +2675,7 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
                 <div class="wc2-acc-body"><div class="wc2-acc-fade">
                   <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">인증 오류가 났는데 왜 오류가 나는지 이유를 알 수가 없어요. 비밀번호도 맞는 거 확인했는데.</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-state">상태 불명확</span><span class="wc2-c-quote">주민등록표 조회가 실제로 되고 있는 건지, 진행 중인지 아닌지 전혀 모르겠어요.</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-retry">재시도 혼란</span><span class="wc2-c-quote">오류가 났을 때 다시 하라는 건지 뒤로 가야 하는 건지 어떻게 해야 하는지 모르겠어요.</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">오류가 났을 때 다시 하라는 건지 뒤로 가야 하는 건지 어떻게 해야 하는지 모르겠어요.</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">몇 번 틀리면 잠기는 건가요? 잠겼을 때 어떻게 해야 하는지 안내가 없어서 포기했어요.</span></div>
                 </div></div>
               </div>
@@ -2682,7 +2687,7 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
                 </button>
                 <div class="wc2-acc-body"><div class="wc2-acc-fade">
                   <div class="wc2-c-row"><span class="wc2-c-cat c-state">상태 불명확</span><span class="wc2-c-quote">로딩 화면이 2~3분째 그대로인데 진행이 되고 있는 건가요? 이게 정상인가요?</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-retry">재시도 혼란</span><span class="wc2-c-quote">갑자기 오류가 났는데 처음부터 다시 해야 하나요? 지금까지 한 게 날아가는 건가요?</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">갑자기 오류가 났는데 처음부터 다시 해야 하나요? 지금까지 한 게 날아가는 건가요?</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-state">상태 불명확</span><span class="wc2-c-quote">조회 도중에 폰 화면이 꺼졌다가 다시 켰더니 처음 화면이에요. 이거 처음부터 다시 해야 하나요?</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-state">상태 불명확</span><span class="wc2-c-quote">로딩이 오래 걸리면 그냥 취소하고 나가도 되나요? 대출에 영향이 생기지 않는지 걱정돼요.</span></div>
                 </div></div>
@@ -2695,9 +2700,9 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
                 </button>
                 <div class="wc2-acc-body"><div class="wc2-acc-fade">
                   <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">조회에 실패했다는데 정부24, 대법원 중에 뭘 다시 해야 하는지 모르겠어요.</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-retry">재시도 혼란</span><span class="wc2-c-quote">같은 걸 몇 번이나 다시 해도 계속 실패해요. 서비스 자체에 문제가 있는 건 아닌가요?</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">같은 걸 몇 번이나 다시 해도 계속 실패해요. 서비스 자체에 문제가 있는 건 아닌가요?</span></div>
                   <div class="wc2-c-row"><span class="wc2-c-cat c-state">상태 불명확</span><span class="wc2-c-quote">"다음 단계를 진행하세요"라는데 실패한 채로 진행하면 대출 심사에 문제가 생기는 건 아닌가요?</span></div>
-                  <div class="wc2-c-row"><span class="wc2-c-cat c-retry">재시도 혼란</span><span class="wc2-c-quote">조회 결과가 일부만 성공했는데, 부분 성공도 제출이 되는 건지 아닌지 알 수가 없어요.</span></div>
+                  <div class="wc2-c-row"><span class="wc2-c-cat c-auth">오류 안내 없음</span><span class="wc2-c-quote">조회 결과가 일부만 성공했는데, 부분 성공도 제출이 되는 건지 아닌지 알 수가 없어요.</span></div>
                 </div></div>
               </div>
             </div></div>
@@ -2709,32 +2714,37 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
               <div class="wc2-funnel-left">
                 <div class="wc2-block-title" style="display:flex;align-items:center;gap:10px;">이탈퍼널 수치화 <span>— 단계별 이슈 발생 건수</span></div>
                 <div class="wc2-funnel-inner">
-                  <p style="font-size:11px;color:var(--sub);margin:0 0 14px;line-height:1.5;">이탈 사유가 있는 VoC를 화면 단위로 집계한 수치입니다. 1인이 복수 단계에서 이슈를 경험할 수 있어 합계는 총 수집 건수를 초과할 수 있습니다.</p>
+                  <p style="font-size:11px;color:var(--sub);margin:0 0 14px;line-height:1.5;">수집한 VoC 130건을 이슈가 발생한 화면 단위로 집계한 수치입니다.</p>
                   <div class="wc2-drop-chart">
                     <div class="wc2-drop-row">
                       <div class="wc2-dr-label">온보딩</div>
-                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-low" style="width:51.1%;">24</div></div>
-                      <div class="wc2-dr-stats"><span class="wc2-dr-n">24건 이슈</span></div>
+                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-high" style="width:52.4%;">22</div></div>
+                      <div class="wc2-dr-stats"><span class="wc2-dr-n">22건 · 17%</span></div>
                     </div>
                     <div class="wc2-drop-row">
                       <div class="wc2-dr-label">신청서 작성</div>
-                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-crit" style="width:100%;">47</div></div>
-                      <div class="wc2-dr-stats"><span class="wc2-dr-n">47건 이슈</span><span class="wc2-dr-rate rate-crit">★ 최다</span></div>
+                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-crit" style="width:100%;">42</div></div>
+                      <div class="wc2-dr-stats"><span class="wc2-dr-n">42건 · 32%</span><span class="wc2-dr-rate rate-crit">★ 최다</span></div>
                     </div>
                     <div class="wc2-drop-row">
                       <div class="wc2-dr-label">인증서 선택</div>
-                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-low" style="width:40.4%;">19</div></div>
-                      <div class="wc2-dr-stats"><span class="wc2-dr-n">19건 이슈</span></div>
+                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-low" style="width:38.1%;">16</div></div>
+                      <div class="wc2-dr-stats"><span class="wc2-dr-n">16건 · 12%</span></div>
                     </div>
                     <div class="wc2-drop-row">
                       <div class="wc2-dr-label">인증 진행</div>
-                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-high" style="width:66.0%;">31</div></div>
-                      <div class="wc2-dr-stats"><span class="wc2-dr-n">31건 이슈</span><span class="wc2-dr-rate rate-high">★ 집중</span></div>
+                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-high" style="width:57.1%;">24</div></div>
+                      <div class="wc2-dr-stats"><span class="wc2-dr-n">24건 · 18%</span><span class="wc2-dr-rate rate-high">★ 집중</span></div>
                     </div>
                     <div class="wc2-drop-row">
                       <div class="wc2-dr-label">스크래핑 대기</div>
-                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-low" style="width:19.1%;">9</div></div>
-                      <div class="wc2-dr-stats"><span class="wc2-dr-n">9건 이슈</span></div>
+                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-low" style="width:31.0%;">13</div></div>
+                      <div class="wc2-dr-stats"><span class="wc2-dr-n">13건 · 10%</span></div>
+                    </div>
+                    <div class="wc2-drop-row">
+                      <div class="wc2-dr-label">결과 조회</div>
+                      <div class="wc2-dr-bar-wrap"><div class="wc2-dr-bar col-low" style="width:31.0%;">13</div></div>
+                      <div class="wc2-dr-stats"><span class="wc2-dr-n">13건 · 10%</span></div>
                     </div>
                   </div>
                 </div>
@@ -2757,8 +2767,8 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
           <div class="conclusion-banner">
             <div class="cb-head"><strong>핵심 인싸이트</strong> <span class="cb-head-src">— 위 이탈퍼널 · 카테고라이징 수치 종합</span></div>
             <div class="cb-metrics">
-              <div class="cb-metric-item"><div class="cb-metric-val">47건</div><div class="cb-metric-lbl">이슈 최다 화면<br>신청서 작성</div></div>
-              <div class="cb-metric-item"><div class="cb-metric-val">31건</div><div class="cb-metric-lbl">이슈 집중 화면<br>인증 진행</div></div>
+              <div class="cb-metric-item"><div class="cb-metric-val">42건</div><div class="cb-metric-lbl">이슈 최다 화면<br>신청서 작성</div></div>
+              <div class="cb-metric-item"><div class="cb-metric-val">24건</div><div class="cb-metric-lbl">이슈 집중 화면<br>인증 진행</div></div>
               <div class="cb-metric-item"><div class="cb-metric-val" style="color:#7cb8f2;">32%</div><div class="cb-metric-lbl">VoC 유형 1위<br>입력 복잡성</div></div>
               <div class="cb-metric-item"><div class="cb-metric-val" style="color:#7cb8f2;">28%</div><div class="cb-metric-lbl">VoC 유형 2위<br>오류 안내 없음</div></div>
             </div>
@@ -2791,14 +2801,15 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             <div class="pv-flow">
               <div class="pv-item pv-problem">
                 <span class="pv-tag">문제정의</span>
-                <p>(임시) 오류 발생 시 현재 상태와 다음 행동이 보이지 않아, 사용자가 서비스 장애로 오인하고 포기한다.</p>
+                <p><strong>증명서 제출 완료율이 67%</strong>에 그쳤고, 인증~결과 구간 VoC 50건의 <strong>98%가 '지금 어떤 상태인지 알 수 없다'</strong> 유형이었다.<br><span style="font-size:13px;color:var(--gray-400);">오류 안내 없음 29건 · 상태 불명확 20건 · 인증 진행 단계 24건(18%)으로 집중</span></p>
               </div>
               <div class="pv-arrow">→</div>
               <div class="pv-item pv-hypo">
                 <span class="pv-tag">가설수립</span>
-                <p>진행 상태와 남은 과업을 보여주고 실패 건만 재시도하게 만들면, 오류 상황에서도 불안과 이탈이 줄어들 것이다.</p>
+                <p><strong>진행 상태와 남은 과업을 보여주고 실패 건만 재시도</strong>하게 만들면 오류 상황에서도 이탈이 줄어들 것이다.<br><span style="font-size:13px;color:var(--accent);font-weight:700;">증명서 제출 완료율 67% → 80% 달성 시 성공</span></p>
               </div>
             </div>
+            <div class="pv-assume"><span class="pv-assume-tag">검증할 가정</span><p>오류 자체보다 '현재 상태와 다음 행동을 알 수 없는 것'이 이탈을 만든다</p></div>
             <div class="impr-step"><span class="impr-step-no">2</span><span class="impr-step-title">개선 방법</span><span class="impr-step-line"></span></div>
             <div class="ab-grid">
               <div class="ab-col ab-before">
@@ -2830,9 +2841,9 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             </div>
             <div class="impr-step"><span class="impr-step-no">3</span><span class="impr-step-title">주요 성과</span><span class="impr-step-line"></span></div>
             <div class="results-row">
-              <div class="result-cell"><div class="result-cell-n">17%↑</div><div class="result-cell-label">증명서 제출 완료율</div></div>
-              <div class="result-cell"><div class="result-cell-n">✓</div><div class="result-cell-label">플랫폼간 연계에서도 무중단 흐름 구현</div></div>
-              <div class="result-cell"><div class="result-cell-n big">0.03%</div><div class="result-cell-label">40만 명 이벤트간 민원율</div></div>
+              <div class="result-cell"><div class="result-cell-n big">84%</div><div class="result-cell-label">증명서 제출 완료율 · 목표 80% 초과</div></div>
+              <div class="result-cell"><div class="result-cell-n">8건</div><div class="result-cell-label">인증~결과 구간 VoC (50건 →)</div></div>
+              <div class="result-cell"><div class="result-cell-n">0.03%</div><div class="result-cell-label">40만 명 이벤트간 민원율</div></div>
             </div>
             <div class="impr-step"><span class="impr-step-no">4</span><span class="impr-step-title">회고</span><span class="impr-step-line"></span></div>
             <div class="retro-block">
@@ -2849,14 +2860,15 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             <div class="pv-flow">
               <div class="pv-item pv-problem">
                 <span class="pv-tag">문제정의</span>
-                <p>(임시) 증명서 제출이 사용자의 본래 목적(대출·지원금 신청)과 단절되어, 낯선 절차로 인식되고 초기에 이탈한다.</p>
+                <p>진입~신청 구간에서 발생한 <strong>VoC 80건의 87.5%가 '무엇을 왜 해야 하는지 모르겠다'</strong> 유형이었다.<br><span style="font-size:13px;color:var(--gray-400);">서비스 이해 부족 28건 · 입력 복잡성 42건 · 신청서 작성 단계 42건(32%)으로 최다</span></p>
               </div>
               <div class="pv-arrow">→</div>
               <div class="pv-item pv-hypo">
                 <span class="pv-tag">가설수립</span>
-                <p>사용자의 원래 목적과 증명서 제출 절차를 같은 맥락으로 연결하면, 초기 불신과 진입 이탈이 줄어들 것이다.</p>
+                <p><strong>사용자의 실제 목적을 랜딩 상단에 먼저 제시하고 입력을 단계별로 분리</strong>하면 진입 단계 이탈이 줄어들 것이다.<br><span style="font-size:13px;color:var(--accent);font-weight:700;">진입 구간 VoC 80건 → 20건 이하(75% 감소) 달성 시 성공</span></p>
               </div>
             </div>
+            <div class="pv-assume"><span class="pv-assume-tag">검증할 가정</span><p>기관명·증명서명 중심의 UI가 사용자의 본래 목적과 단절되어 있다</p></div>
             <div class="impr-step"><span class="impr-step-no">2</span><span class="impr-step-title">개선 방법</span><span class="impr-step-line"></span></div>
             <div class="ab-grid">
               <div class="ab-col ab-before">
@@ -2886,9 +2898,9 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
             </div>
             <div class="impr-step"><span class="impr-step-no">3</span><span class="impr-step-title">주요 성과</span><span class="impr-step-line"></span></div>
             <div class="results-row">
-              <div class="result-cell"><div class="result-cell-n">96%↓</div><div class="result-cell-label">초기 진입 민원 감소</div></div>
-              <div class="result-cell"><div class="result-cell-n">✓</div><div class="result-cell-label">B2B2C 연계 서비스의 사용성 검증</div></div>
-              <div class="result-cell"><div class="result-cell-n">30개↑</div><div class="result-cell-label">리뉴얼 후 6개월 신규 고객사 연동</div></div>
+              <div class="result-cell"><div class="result-cell-n big">96%↓</div><div class="result-cell-label">초기 진입 민원 · 목표 75% 초과</div></div>
+              <div class="result-cell"><div class="result-cell-n">3건</div><div class="result-cell-label">진입 구간 VoC (80건 →)</div></div>
+              <div class="result-cell"><div class="result-cell-n">30개↑</div><div class="result-cell-label">리뉴얼 후 6개월 신규 고객사</div></div>
             </div>
             <div class="impr-step"><span class="impr-step-no">4</span><span class="impr-step-title">회고</span><span class="impr-step-line"></span></div>
             <div class="retro-block">
