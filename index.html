@@ -1051,7 +1051,7 @@ section{position:relative;}
 .float-btn:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(0,100,224,0.30);}
 .float-btn svg{stroke:#fff;}
 #nav-dots{position:fixed;right:8px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;z-index:500;}
-.nav-dot{width:64px;padding:8px 0;text-align:center;cursor:pointer;background:#fff;border:1px solid var(--gray-200);border-radius:100px;font-family:var(--ff);font-size:11px;font-weight:600;color:var(--sub);white-space:nowrap;box-shadow:0 1px 4px rgba(16,24,40,0.06);transition:color 0.2s ease,background 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease,transform 0.2s ease;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
+.nav-dot{width:84px;padding:8px 6px;text-align:center;cursor:pointer;background:#fff;border:1px solid var(--gray-200);border-radius:100px;font-family:var(--ff);font-size:11px;font-weight:600;color:var(--sub);white-space:nowrap;box-shadow:0 1px 4px rgba(16,24,40,0.06);transition:color 0.2s ease,background 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease,transform 0.2s ease;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;}
 .nav-dot:not(.active):hover{color:var(--accent);border-color:rgba(0,100,224,0.35);transform:translateX(-2px);box-shadow:0 2px 8px rgba(0,100,224,0.12);}
 .nav-dot.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700;box-shadow:0 3px 12px rgba(0,100,224,0.30);}
 .nav-dot:focus-visible{outline:2px solid var(--blue-300);outline-offset:2px;}
@@ -1958,8 +1958,8 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
 <nav id="nav-dots">
   <button type="button" class="nav-dot" data-section="summary">프로필</button>
   <button type="button" class="nav-dot" data-section="stats">핵심 성과</button>
-  <button type="button" class="nav-dot" data-section="lead">일하는 방식</button>
-  <button type="button" class="nav-dot" data-section="case">문제해결</button>
+  <button type="button" class="nav-dot" data-section="lead">프로덕트 리딩</button>
+  <button type="button" class="nav-dot" data-section="case">문제해결 사례</button>
   <button type="button" class="nav-dot" data-section="ai">AI 활용</button>
   <button type="button" class="nav-dot" data-section="skills">특화 역량</button>
   <button type="button" class="nav-dot" data-section="outro">마무리</button>
@@ -2008,8 +2008,8 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
         <ol class="hero-index-list">
           <li><a onclick="_goto('summary')"><span class="idx-body"><span class="idx-name">프로필</span><span class="idx-sub">규제와 기술이 복잡한 금융을 일상에 녹여왔습니다</span></span><span class="idx-arrow">→</span></a></li>
           <li><a onclick="_goto('stats')"><span class="idx-body"><span class="idx-name">6년의 성과</span><span class="idx-sub">9개 서비스 구축, 11개 서비스 운영, 회원가입 43만명 등 숫자로 증명하는 이력</span></span><span class="idx-arrow">→</span></a></li>
-          <li><a onclick="_goto('lead')"><span class="idx-body"><span class="idx-name">일하는 방식</span><span class="idx-sub">애자일 기반으로 문제를 정의하고 우선순위를 세우는 방식</span></span><span class="idx-arrow">→</span></a></li>
-          <li><a onclick="_goto('case')"><span class="idx-body"><span class="idx-name">문제해결 사례</span><span class="idx-sub">위 '일하는 방식'을 실제 서비스에 적용한 UX·UI 개선 사례</span></span><span class="idx-arrow">→</span></a></li>
+          <li><a onclick="_goto('lead')"><span class="idx-body"><span class="idx-name">나만의 프로덕트 리딩 방법</span><span class="idx-sub">애자일 기반으로 문제를 정의하고 우선순위를 세우는 방식</span></span><span class="idx-arrow">→</span></a></li>
+          <li><a onclick="_goto('case')"><span class="idx-body"><span class="idx-name">문제해결 사례</span><span class="idx-sub">위 '프로덕트 리딩'을 실제 서비스에 적용한 UX·UI 개선 사례</span></span><span class="idx-arrow">→</span></a></li>
           <li><a onclick="_goto('ai')"><span class="idx-body"><span class="idx-name">AI 활용</span><span class="idx-sub">기획의 모든 과정에 AI를 활용합니다</span></span><span class="idx-arrow">→</span></a></li>
           <li><a onclick="_goto('skills')"><span class="idx-body"><span class="idx-name">특화 역량</span><span class="idx-sub">예외가 규칙보다 많은 금융 도메인에서 체화된 역량</span></span><span class="idx-arrow">→</span></a></li>
         </ol>
@@ -2095,40 +2095,40 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
       <div class="stat-card" id="sc0">
         <div class="sc-num" data-target="43" data-suffix="만명">43만명</div>
         <div class="sc-name">신규 사용자 유치</div>
-        <p class="sc-desc">정량적·정성적 지표로 서비스 유입 허들 제거. 코어피쳐 맞춤형 홍보 전략으로 유입·전환 극대화. 신규고객 안착을 위한 동기부여 구조 설계.</p>
+        <p class="sc-desc">정량적·정성적 지표로 서비스 유입 허들 제거. 코어피쳐 맞춤형 홍보 전략으로 유입·전환 극대화. 이용내역 없는 신규 유저 초기 경험 설계.</p>
         <div class="sc-tags">
           <span class="sc-ht">#퍼널 최적화</span>
           <span class="sc-ht">#마케팅 전략 설계</span>
-          <span class="sc-ht">#리텐션 그로스</span>
+          <span class="sc-ht">#초기 경험 설계</span>
         </div>
       </div>
       <div class="stat-card" id="sc1">
         <div class="sc-num" data-target="9" data-suffix="개">9개</div>
         <div class="sc-name">0부터 서비스 런칭까지</div>
-        <p class="sc-desc">비즈니스 모델 수립부터 런칭까지 전 과정 리딩. 직접구축, SI, 타사 공동진행 등 다양한 환경 경험. 금융규제의 모호한 가이드라인을 뚫고 시장에 없던 서비스 설계.</p>
+        <p class="sc-desc">비즈니스 모델·서비스 정책 수립부터 런칭까지 전 과정 리딩. 직접구축·SI 발주·타사 공동개발 등 모든 구축 방식 수행. 금융규제 해석으로 시장에 없던 서비스 설계.</p>
         <div class="sc-tags">
           <span class="sc-ht">#End-to-End 설계</span>
-          <span class="sc-ht">#금융규제 돌파</span>
-          <span class="sc-ht">#금융특화</span>
+          <span class="sc-ht">#금융규제 해석</span>
+          <span class="sc-ht">#0→1 구축</span>
         </div>
       </div>
       <div class="stat-card" id="sc2">
         <div class="sc-num" data-target="3" data-suffix="개">3개</div>
-        <div class="sc-name">제품 재구조화</div>
-        <p class="sc-desc">비즈니스 관성으로 비대해진 UI 전면 삭제. 유저 본질 니즈 맞춤 단일 맥락 여정 재설계. 핵심 가설을 데이터로 증명하며 서비스 방향성 전환. 5건 이상 등록자 105%↑ 등 핵심 지표 반등.</p>
+        <div class="sc-name">서비스 리뉴얼</div>
+        <p class="sc-desc">사용자 행동 데이터 기반 문제 재정의. 공급자 중심 정보구조를 사용자 맥락 중심으로 재설계. 흩어진 기능을 하나의 사용 흐름으로 통합. 가설 검증으로 서비스 방향성 전환.</p>
         <div class="sc-tags">
-          <span class="sc-ht">#파괴적 재구조화</span>
+          <span class="sc-ht">#데이터 기반 문제정의</span>
           <span class="sc-ht">#가설 기반 피벗</span>
-          <span class="sc-ht">#정량적 지표 반등</span>
+          <span class="sc-ht">#정보구조 재설계</span>
         </div>
       </div>
       <div class="stat-card" id="sc3">
         <div class="sc-num" data-target="11" data-suffix="개">11개</div>
         <div class="sc-name">서비스 운영</div>
-        <p class="sc-desc">ISMS 인증, 웹 접근성, 금융 보안 감사 등 금융권 필수 컴플라이언스 완벽 대응. 예산·실적·C레벨 보고로 프로젝트 동력 확보. 개발, 법무, 준법 등 내외부 이해관계 조정.</p>
+        <p class="sc-desc">ISMS 인증, 웹 접근성, 금융 보안 감사 등 금융권 필수 컴플라이언스 대응. 장단기 로드맵 수립과 페인포인트 발굴·개선·회고 반복. 개발·법무·준법 등 내외부 이해관계 조정.</p>
         <div class="sc-tags">
           <span class="sc-ht">#규제·인증 대응</span>
-          <span class="sc-ht">#비즈니스 소통</span>
+          <span class="sc-ht">#로드맵 수립</span>
           <span class="sc-ht">#스테이크홀더 관리</span>
         </div>
       </div>
@@ -2269,7 +2269,7 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
   <div class="section-diamond" id="caseDiamond"></div>
   <div class="section-inner">
     <div class="sec-num">04 · 문제해결</div>
-    <h2 class="t2 masked-title" style="margin-bottom:16px;"><span style="letter-spacing:0.05em;">'</span>일하는 방식<span style="letter-spacing:0.05em;">'</span>을 실제 문제해결로 증명합니다</h2>
+    <h2 class="t2 masked-title" style="margin-bottom:16px;"><span style="letter-spacing:0.05em;">'</span>프로덕트 리딩<span style="letter-spacing:0.05em;">'</span>을 실제 문제해결로 증명합니다</h2>
     <p class="case-intro">고객의 요구, 페인포인트, 사용 데이터를 기반으로 문제를 정의하고 성과까지 연결한 기록입니다.<br>'현상'에서 '왜'를 발굴하고, 과제로 쪼개 우선순위를 정한 뒤 끝까지 실행하기 위해 다양한 방법론을 사용합니다.</p>
 
     <div class="case-switch">
@@ -2351,7 +2351,7 @@ img.icon-glyph{width:1em;height:1em;vertical-align:-0.15em;object-fit:contain;di
                 <div class="finding-row"><div class="finding-dot"><div class="finding-dot-inner"></div></div><p><strong>가계부 등록 <span class="hl">5건이 리텐션 임계점</span></strong> — 재방문율이 등록 0건 <strong>15.0%</strong>에서 5건 이상 <strong>88.5%</strong>로 급등한 뒤, 20건 이상(88.4%)까지 <strong>88%대에서 포화</strong></p></div>
                 <div class="finding-row"><div class="finding-dot"><div class="finding-dot-inner"></div></div><p>기록 또는 조회 단일 기능만 사용 후 즉시 이탈하는 <strong>단발성 세션 비율이 87%로 높음</strong></p></div>
                 <div class="finding-row"><div class="finding-dot"><div class="finding-dot-inner"></div></div><p><strong>5060대 72.3%, 남성 60.8%</strong>로 편중된 유저 분포 — 디지털 서비스 능숙도가 낮아 복잡한 UI에 취약</p></div>
-                <div class="finding-row"><div class="finding-dot"><div class="finding-dot-inner"></div></div><p>핵심 기능 간 <strong>교차 사용률 1.3%</strong> — 가계부와 인맥그룹을 함께 사용한 유저는 전체의 <strong>1.34%</strong>에 불과</p></div>
+                <div class="finding-row"><div class="finding-dot"><div class="finding-dot-inner"></div></div><p>핵심 기능 간 <strong>교차 사용률 1.1%</strong> — 가계부와 인맥그룹을 함께 사용한 유저는 전체의 <strong>1.06%</strong>에 불과</p></div>
                 <div class="finding-row"><div class="finding-dot"><div class="finding-dot-inner"></div></div><p><strong>기능별 도달률 편중</strong> — 가계부 74.5% vs 인맥그룹 1.2% · 송금 0.5%</p></div>
               </div>
             </div>
